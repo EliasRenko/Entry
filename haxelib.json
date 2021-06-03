@@ -1,0 +1,12 @@
+{
+    "name": "entry",
+    "license": "MIT",
+    "url": "https://null",
+    "description": "",
+    "releasenote": "",
+    "version": "0.0.1",
+
+    "contributors": ["EliasRenko"],
+    "tags": [],
+    "dependencies": {}
+}

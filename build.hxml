@@ -1,0 +1,6 @@
+-neko run.n
+-main Entry
+-cp src
+
+-cmd neko run.n __test
+

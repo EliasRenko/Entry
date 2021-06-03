@@ -1,0 +1,30 @@
+{
+	"Project" :
+	{
+		"Name" : "DRC2D",
+		
+		"Author" : "Fedorenko Elias",
+		
+		"Version" : "0.0.1",
+		
+		"App" : 
+		{
+			"Name" : "Template",
+			
+			"Package" : "org.drc.template"
+		},
+		
+		"Build" :
+		{
+			"Assets" : "res",
+			
+			"Source" : "src",
+			
+			"Dependencies" : ["sdl", "opengl"],
+			
+			"Flags" : ["-dce full"]
+		},
+		
+		"Folders" : ["profiles, shaders"]
+	}
+}
