@@ -16,8 +16,6 @@ import utils.Project;
 
     Resources:
 
-    Setup:
-
 **/
 
 class Entry {
