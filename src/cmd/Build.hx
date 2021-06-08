@@ -1,5 +1,6 @@
 package cmd;
 
+import utils.Pro;
 import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
@@ -13,9 +14,9 @@ class Build {
 
     /** @private **/ private var __directoryName:String;
 
-    /** @private **/ private var __project:Project;
+    /** @private **/ private var __project:Pro;
 
-    public function new(project:Project):Void {
+    public function new(project:Pro):Void {
 
         __project = project;
     }
@@ -30,7 +31,7 @@ class Build {
 
         _hxmlArgs.push('-cp');
 
-        _hxmlArgs.push(__project.path + __project.sourceDirectory);
+        _hxmlArgs.push(__project.path + __project.sourcePath);
 
         switch(arg) {
 
