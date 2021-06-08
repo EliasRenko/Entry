@@ -1,0 +1,45 @@
+{
+	expr: EBlock([{
+		expr: EIf({
+			expr: EBinop(OpEq, {
+				expr: EArray({
+					expr: EConst(CIdent(_args))
+					pos: #pos
+				}, {
+					expr: EConst(CInt(0))
+					pos: #pos
+				})
+				pos: #pos
+			}, {
+				expr: EConst(CIdent(null))
+				pos: #pos
+			})
+			pos: #pos
+		}, {
+			expr: EThrow({
+				expr: ECall({
+					expr: EField({
+						expr: EField({
+							expr: EField({
+								expr: EConst(CIdent(utils))
+								pos: #pos
+							}, Debug)
+							pos: #pos
+						}, DebugError)
+						pos: #pos
+					}, null_assertion)
+					pos: #pos
+				}, [{
+					expr: null <- expected value
+					pos: null <- expected value
+				}])
+				pos: #pos
+			})
+			pos: #pos
+		}, null)
+		pos: #pos
+	}])
+	pos: #pos
+}
+line 33: expected value
+line 34: expected value

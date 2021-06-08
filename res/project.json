@@ -11,7 +11,7 @@
 		{
 			"Name" : "Template",
 			
-			"Package" : "org.drc.template",
+			"Package" : "org.drc.template"
 		},
 		
 		"Build" :

@@ -1,5 +1,7 @@
 package;
 
+import utils.Pro;
+import utils.Debug;
 import cmd.Build;
 import cmd.Clean;
 import cmd.Resources;
@@ -7,6 +9,7 @@ import cmd.Setup;
 import utils.Common;
 import utils.Log;
 import utils.Project;
+import utils.Pro;
 
 /** 
 
@@ -15,6 +18,8 @@ import utils.Project;
     Clean:
 
     Resources:
+
+    Setup:
 
 **/
 
@@ -26,71 +31,62 @@ class Entry {
 
         var _result:Bool = true;
 
+        Debug.assertnull(_args[0], 'No argument has been found. No task to complete.');
+
         var _project:Project = new Project(_args[_args.length - 1]);
+
+        var _pro:Pro = utils.Resources.getProject(_args[_args.length - 1]);
 
         _args.pop();
 
-        if (_args[0] != null) {
+        if (_project.parse()) {
 
-            if (_project.parse()) {
-
-                switch(_args[0]) {
+            switch(_args[0]) {
+            
+                case 'build':
                 
-                    case 'build':
+                    if (runResources(_project, _args[1])) {
+
+                        _result = runBuild(_project, _args[1]);
+                    }
+
+                    if (_project.debug) {
+
+                        //runClean(_project, _args[1]);
+                    }
                     
-                        if (runResources(_project, _args[1])) {
+                case 'clean':
+                    
+                    _result = runClean(_project, _args[1]);
 
-                            _result = runBuild(_project, _args[1]);
-                        }
+                case '_setup':
 
-                        if (_project.debug) {
+                    _result = runSetup(_project, _args[1]);
 
-                            //runClean(_project, _args[1]);
-                        }
-                        
-                    case 'clean':
-                        
-                        _result = runClean(_project, _args[1]);
+                    //project.generate();
 
-                    case '_setup':
+                case 'resources':
 
-                        _result = runSetup(_project, _args[1]);
+                    _result = runResources(_project, _args[1]);
 
-                        //project.generate();
+                default:
+    
+                    /** If argument is not supported... **/
 
-                    case 'resources':
-
-                        _result = runResources(_project, _args[1]);
-
-                    default:
-        
-                        /** If argument is not supported... **/
-
-                        Log.print('Invalid argument found.');
-                }
-            }
-            else {
-
-                /** Invalid project file has been found... **/
-
-                Log.print('Invalid project file.');
-
-                /** Exit the application. **/
-                
-                Sys.exit(0);
+                    Log.print('Invalid argument found.');
             }
         }
         else {
 
-            /** If no argument has been found... **/
+            /** Invalid project file has been found... **/
 
-            Log.print('No argument has been found. No task to complete.');
+            Log.print('Invalid project file.');
 
             /** Exit the application. **/
             
             Sys.exit(0);
         }
-
+        
         if (_result) {
 
             /** If the action was successful... **/
